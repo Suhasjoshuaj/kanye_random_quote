@@ -11,6 +11,6 @@ A simple web app that displays a **random Kanye West quote** every time you clic
 -  Fetches quotes from the Kanye Rest API
 -  Updates the quote without reloading the page (AJAX)
 -  Clean, centered modal UI 
-- ⚙️ 
+  
 
 ---
