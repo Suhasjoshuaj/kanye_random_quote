@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kanye Quote Generator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('/kanye_bear.jpg') no-repeat;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal {
+      background-color: #EEEEEE;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(90, 80, 80, 0.5);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .modal h1 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    #quote {
+      margin: 1rem 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    button {
+      padding: 0.6rem 1.2rem;
+      background-color: #db7d7d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #444; 
+    }
+    .quote-box {
+      margin-bottom: 20px;
+      font-style: italic;
+      line-height: 1.4;
+      font-size: 1.1rem;
+      min-height: 60px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="modal">
+    <h1>Kanye Quote Machine</h1>
+    <div id="quote" class="quote-box"><%=quote %></div>
+    <button onclick="fetchQuote()">New Quote</button>
+  </div>
+
+  <script>
+    async function fetchQuote() {
+      const res = await fetch('/api/quote');
+      const data = await res.json();
+      document.getElementById('quote').textContent = `"${data.quote}"`;
+    }
+  </script>
+</body>
+</html>
+
+
